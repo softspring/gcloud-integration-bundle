@@ -1,0 +1,7 @@
+{
+    "name": "softspring/gcloud-integration-bundle",
+    "description": "This bundle allows to integrate Symfony projects with Gcloud",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "require": {}
+}
