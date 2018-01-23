@@ -4,7 +4,8 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "require": {
-        "google/cloud": "^0.8"
+        "monolog/monolog": "~1.0",
+        "google/cloud": "~0.45"
     },
     "autoload": {
         "psr-4": {
