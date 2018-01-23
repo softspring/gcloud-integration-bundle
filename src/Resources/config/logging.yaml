@@ -1,0 +1,20 @@
+services:
+    sfs_gcloud_integration.logging.client:
+        class: Google\Cloud\Logging\LoggingClient
+
+    sfs_gcloud_integration.logger:
+        class: Google\Cloud\Logging\Logger
+        factory: ['@sfs_gcloud_integration.logging.client', logger]
+        arguments: ['%sfs_gcloud_integration.logging.logger.name%', '%sfs_gcloud_integration.logging.logger.options%']
+
+    sfs_gcloud_integration.monolog.formatter:
+        class: Monolog\Formatter\LineFormatter
+        arguments:
+            - "%%channel%%.%%level_name%%: %%message%% %%context%% %%extra%%\n"
+
+    sfs_gcloud_integration.monolog.handler:
+        class: Softspring\GcloudIntegrationBundle\Monolog\Handler\GcloudHandler
+        arguments: ['%sfs_gcloud_integration.logging.level%', '%sfs_gcloud_integration.logging.bubble%', '@sfs_gcloud_integration.logger']
+        calls:
+            - { method: 'setFormatter', arguments: ['@sfs_gcloud_integration.monolog.formatter'] }
+

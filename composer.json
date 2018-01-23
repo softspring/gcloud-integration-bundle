@@ -3,5 +3,12 @@
     "description": "This bundle allows to integrate Symfony projects with Gcloud",
     "type": "symfony-bundle",
     "license": "MIT",
-    "require": {}
+    "require": {
+        "google/cloud": "^0.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Softspring\\GcloudIntegrationBundle\\": "src/"
+        }
+    }
 }
