@@ -4,7 +4,7 @@ services:
 
     sfs_gcloud_integration.logger:
         class: Google\Cloud\Logging\Logger
-        factory: ['@sfs_gcloud_integration.logging.client', logger]
+        factory: ['@sfs_gcloud_integration.logging.client', '%sfs_gcloud_integration.logging.logger.factoryMethod%']
         arguments: ['%sfs_gcloud_integration.logging.logger.name%', '%sfs_gcloud_integration.logging.logger.options%']
 
     sfs_gcloud_integration.monolog.formatter:

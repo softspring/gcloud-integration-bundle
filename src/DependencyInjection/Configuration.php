@@ -32,6 +32,7 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('logger')
                             ->addDefaultsIfNotSet()
                             ->children()
+                                ->enumNode('type')->defaultValue('logger')->values(['logger', 'psr', 'psr_batch'])->end()
                                 ->scalarNode('name')->defaultValue('global')->info('The name of the log to write entries to.')->end()
                                 ->arrayNode('resource')
                                     ->info('The monitored resource to associate log entries with. https://cloud.google.com/logging/docs/api/reference/rest/v2/MonitoredResource')

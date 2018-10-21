@@ -26,6 +26,14 @@ class SfsGcloudIntegrationExtension extends Extension
             $container->setParameter('sfs_gcloud_integration.logging.level', $config['logging']['level']);
             $container->setParameter('sfs_gcloud_integration.logging.bubble', $config['logging']['bubble']);
             $container->setParameter('sfs_gcloud_integration.logging.logger.name', $config['logging']['logger']['name']);
+
+            $typesAndFactoryMethods = [
+                'logger' => 'logger',
+                'psr' => 'psrLogger',
+                'psr_batch' => 'psrBatchLogger',
+            ];
+            $container->setParameter('sfs_gcloud_integration.logging.logger.factoryMethod', $typesAndFactoryMethods[$config['logging']['logger']['type']]);
+
             $container->setParameter('sfs_gcloud_integration.logging.logger.options', [
                 'resource' => !empty($config['logging']['logger']['resource']) ? $config['logging']['logger']['resource'] : null,
                 'labels' => !empty($config['logging']['logger']['labels']) ? $config['logging']['logger']['labels'] : null,
