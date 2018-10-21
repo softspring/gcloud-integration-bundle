@@ -40,6 +40,12 @@ class SfsGcloudIntegrationExtension extends Extension
             ]);
 
             $loader->load('logging.yaml');
+
+            if ($config['logging']['logger']['type']=='logger') {
+                $loader->load('logging_gcloud_handler.yaml');
+            } else {
+                $loader->load('logging_gcloud_psr_handler.yaml');
+            }
         }
 
         if ($config['error_reporting']['enabled']) {

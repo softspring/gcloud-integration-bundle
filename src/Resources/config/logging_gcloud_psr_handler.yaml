@@ -1,0 +1,12 @@
+services:
+    sfs_gcloud_integration.psr_logger:
+        class: Google\Cloud\Logging\PsrLogger
+        factory: ['@sfs_gcloud_integration.logging.client', '%sfs_gcloud_integration.logging.logger.factoryMethod%']
+        arguments: ['%sfs_gcloud_integration.logging.logger.name%', '%sfs_gcloud_integration.logging.logger.options%']
+
+    sfs_gcloud_integration.monolog.handler:
+        class: Softspring\GcloudIntegrationBundle\Monolog\Handler\GcloudPsrHandler
+        arguments: ['%sfs_gcloud_integration.logging.level%', '%sfs_gcloud_integration.logging.bubble%', '@sfs_gcloud_integration.psr_logger']
+        calls:
+            - { method: 'setFormatter', arguments: ['@sfs_gcloud_integration.monolog.formatter'] }
+
