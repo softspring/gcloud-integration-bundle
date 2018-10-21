@@ -19,6 +19,10 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->arrayNode('error_reporting')
+                    ->canBeEnabled()
+                ->end()
+
                 ->arrayNode('logging')
                     ->canBeEnabled()
                     ->children()

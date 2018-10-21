@@ -4,6 +4,19 @@ This bundle allows to integrate Symfony projects with Google Cloud Platform.
 
 Warning!! This bundle is under development. Use it carefully.
 
+## Error reporting
+
+    sfs_gcloud_integration:
+        error_reporting: true
+
+    if ($env == 'prod') {
+        Bootstrap::init();
+    }
+    
+**References**
+
+https://cloud.google.com/error-reporting/docs/setup/php
+
 ## Logging
 
 ### Basic configuration

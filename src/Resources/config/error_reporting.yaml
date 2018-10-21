@@ -1,0 +1,5 @@
+services:
+    sfs_gcloud_integration.error_reporting.event_subscriber:
+        class: Softspring\GcloudIntegrationBundle\EventListener\ExceptionEventSubscriber
+        tags:
+            - { name: kernel.event_subscriber }

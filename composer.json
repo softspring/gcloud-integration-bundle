@@ -5,7 +5,8 @@
     "license": "MIT",
     "require": {
         "monolog/monolog": "~1.0",
-        "google/cloud-logging": "^1.13"
+        "google/cloud-error-reporting": "^0.12.1",
+        "google/cloud-logging": "^1.13",
     },
     "autoload": {
         "psr-4": {

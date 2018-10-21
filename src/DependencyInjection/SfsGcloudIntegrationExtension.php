@@ -23,7 +23,6 @@ class SfsGcloudIntegrationExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if ($config['logging']['enabled']) {
-
             $container->setParameter('sfs_gcloud_integration.logging.level', $config['logging']['level']);
             $container->setParameter('sfs_gcloud_integration.logging.bubble', $config['logging']['bubble']);
             $container->setParameter('sfs_gcloud_integration.logging.logger.name', $config['logging']['logger']['name']);
@@ -33,6 +32,10 @@ class SfsGcloudIntegrationExtension extends Extension
             ]);
 
             $loader->load('logging.yaml');
+        }
+
+        if ($config['error_reporting']['enabled']) {
+            $loader->load('error_reporting.yaml');
         }
     }
 }
